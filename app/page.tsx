@@ -144,14 +144,14 @@ export default function LandingPage() {
       <section className="min-h-screen flex items-center justify-center px-6 bg-cover bg-center bg-no-repeat relative" style={{backgroundImage: 'url(/bg.png)'}}>
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/60 via-white/70 to-blue-100/60"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-semibold text-slate-900 mb-6 leading-tight tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-slate-900 mb-6 leading-tight tracking-tight">
             AI that helps you date
             <span className="text-blue-600 block">smarter, instantly</span>
           </h1>
-          <p className="text-lg text-slate-600 mb-10 max-w-xl mx-auto leading-relaxed tracking-tight">
+          <p className="text-base sm:text-lg text-slate-600 mb-10 max-w-xl mx-auto leading-relaxed tracking-tight">
             Analyze profiles, understand conversations, and get personalized date suggestions with our intelligent dating overlay tool.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button size="default" className="bg-blue-600 hover:bg-blue-700 text-sm px-6 py-3 font-medium tracking-tight">
               <Download className="mr-2 h-4 w-4" />
               Download Now
