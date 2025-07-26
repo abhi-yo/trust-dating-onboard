@@ -2,8 +2,26 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { StripeBgGuides } from "@/components/ui/stripe-bg-guides"
 import { Shield, MessageCircle, Calendar, Monitor, Layers, Download, ChevronRight, Menu, X } from "lucide-react"
+
+// Simple grid guide component
+const GridGuides = ({ preserveBackground = false }) => (
+  <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div className="h-full max-w-7xl mx-auto px-6 relative">
+      {/* White left margin - extends to left edge of viewport */}
+      <div className="absolute inset-y-0 right-full w-[100vw] bg-white"></div>
+      {/* White right margin - extends to right edge of viewport */}
+      <div className="absolute inset-y-0 left-full w-[100vw] bg-white"></div>
+      {/* Content area */}
+      <div className={`h-full relative ${preserveBackground ? 'bg-transparent' : 'bg-white'}`}>
+        {/* Left guide line */}
+        <div className="absolute inset-y-0 -left-6 w-px bg-gray-200/80"></div>
+        {/* Right guide line */}
+        <div className="absolute inset-y-0 -right-6 w-px bg-gray-200/80"></div>
+      </div>
+    </div>
+  </div>
+)
 
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -57,7 +75,7 @@ export default function LandingPage() {
           }`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <span className={`font-semibold transition-all duration-300 ${
+                <span className={`font-medium transition-all duration-300 ${
                   isScrolled ? 'text-base' : 'text-lg'
                 } text-slate-900 tracking-tight`}>
                   Trust Dating
@@ -97,7 +115,7 @@ export default function LandingPage() {
               {/* CTA Button */}
               <Button 
                 size="sm" 
-                className={`hidden md:flex bg-slate-900 hover:bg-slate-800 text-white font-medium transition-all duration-300 tracking-tight ${
+                className={`hidden md:flex bg-slate-900 hover:bg-slate-800 text-white font-medium transition-all duration-300 tracking-tight shadow-md hover:shadow-lg ${
                   isScrolled 
                     ? 'rounded-full px-4 py-1.5 text-xs h-7' 
                     : 'rounded-lg px-5 py-2 text-sm h-9'
@@ -129,7 +147,7 @@ export default function LandingPage() {
                   </a>
                   <Button 
                     size="sm" 
-                    className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-6 py-2 font-medium w-full text-sm tracking-tight"
+                    className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-6 py-2.5 font-medium w-full text-sm tracking-tight shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                   >
                     Get Started
                   </Button>
@@ -143,52 +161,52 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-6 bg-cover bg-center bg-no-repeat relative" style={{backgroundImage: 'url(/bg.png)'}}>
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/60 via-white/70 to-blue-100/60"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-slate-900 mb-6 leading-tight tracking-tight">
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-slate-900 mb-8 leading-tight tracking-tighter">
             AI that helps you date
-            <span className="text-blue-600 block">smarter, instantly</span>
+            <span className="text-blue-600 block">safely, instantly</span>
           </h1>
-          <p className="text-base sm:text-lg text-slate-600 mb-10 max-w-xl mx-auto leading-relaxed tracking-tight">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed tracking-tight">
             Analyze profiles, understand conversations, and get personalized date suggestions with our intelligent dating overlay tool.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Button size="default" className="bg-blue-600 hover:bg-blue-700 text-sm px-6 py-3 font-medium tracking-tight">
-              <Download className="mr-2 h-4 w-4" />
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-base px-6 py-3 font-medium tracking-tight rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_8px_16px_rgba(59,130,246,0.15)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_12px_24px_rgba(59,130,246,0.25)] transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-blue-200 border border-blue-500/20">
+              <Download className="mr-2 h-5 w-5" />
               Download Now
             </Button>
             <Button
               variant="outline"
-              size="default"
-              className="text-sm px-6 py-3 border-blue-200 hover:bg-blue-50 bg-white text-slate-900 font-medium tracking-tight"
+              size="lg"
+              className="text-base px-6 py-3 border-2 border-blue-100 hover:bg-blue-50/70 hover:border-blue-200 bg-white text-slate-900 font-medium tracking-tight rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_8px_20px_rgba(0,0,0,0.1)] transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-blue-100"
             >
               Learn More
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <ChevronRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="relative overflow-hidden py-32 px-6 bg-white">
-        <StripeBgGuides contained />
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-20">
+      <section id="features" className="relative py-20 px-6 bg-gray-50/30">
+        <GridGuides preserveBackground={true} />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-medium text-slate-900 mb-4 leading-tight tracking-tight">Features</h2>
-            <p className="text-base text-slate-600 max-w-xl mx-auto leading-relaxed tracking-tight">
+            <p className="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed tracking-tight">
               Everything you need to make informed decisions and meaningful connections.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group text-center p-6 hover:bg-blue-50/50 rounded-2xl transition-all duration-300 border border-transparent hover:border-blue-100/50"
+                className="group text-center p-6 hover:bg-white/60 rounded-2xl transition-all duration-300 border border-transparent hover:border-gray-200/50 hover:shadow-sm"
               >
                 <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:bg-blue-100 group-hover:scale-105 transition-all duration-300">
                   <feature.icon className="h-5 w-5 text-slate-700 transition-colors" />
                 </div>
-                <h3 className="text-base font-semibold text-slate-900 mb-2 tracking-tight">{feature.title}</h3>
+                <h3 className="text-base font-medium text-slate-900 mb-2 tracking-tight">{feature.title}</h3>
                 <p className="text-sm text-slate-600 leading-relaxed tracking-tight">{feature.description}</p>
               </div>
             ))}
@@ -197,22 +215,22 @@ export default function LandingPage() {
       </section>
 
       {/* Trust & Safety Section */}
-      <section className="relative overflow-hidden py-32 px-6 bg-blue-50/30">
-        <StripeBgGuides contained />
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="text-center mb-16">
+      <section className="relative py-20 px-6 bg-white">
+        <GridGuides />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-medium text-slate-900 mb-4 leading-tight tracking-tight">Trust & Safety</h2>
-            <p className="text-base text-slate-600 max-w-xl mx-auto leading-relaxed tracking-tight">
+            <p className="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed tracking-tight">
               Built with privacy and security at its core
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Shield className="h-4 w-4 text-slate-700" />
+                  <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <Shield className="h-5 w-5 text-slate-700" />
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">End-to-End Encryption</h3>
@@ -220,8 +238,8 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Monitor className="h-4 w-4 text-slate-700" />
+                  <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <Monitor className="h-5 w-5 text-slate-700" />
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Offline Processing</h3>
@@ -229,8 +247,8 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Layers className="h-4 w-4 text-slate-700" />
+                  <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <Layers className="h-5 w-5 text-slate-700" />
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-slate-900 mb-2 tracking-tight">Zero Data Collection</h3>
@@ -239,22 +257,22 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div className="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm">
-              <div className="grid grid-cols-2 gap-6 text-center">
+            <div className="bg-gray-50/50 p-10 rounded-3xl border border-gray-100">
+              <div className="grid grid-cols-2 gap-8 text-center">
                 <div>
-                  <div className="text-2xl font-medium text-slate-900 tracking-tight mb-1">256-bit</div>
+                  <div className="text-3xl font-medium text-slate-900 tracking-tight mb-2">256-bit</div>
                   <div className="text-slate-600 text-sm tracking-tight">Encryption</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-medium text-slate-900 tracking-tight mb-1">0%</div>
+                  <div className="text-3xl font-medium text-slate-900 tracking-tight mb-2">0%</div>
                   <div className="text-slate-600 text-sm tracking-tight">Data Shared</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-medium text-slate-900 tracking-tight mb-1">100%</div>
+                  <div className="text-3xl font-medium text-slate-900 tracking-tight mb-2">100%</div>
                   <div className="text-slate-600 text-sm tracking-tight">Private</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-medium text-slate-900 tracking-tight mb-1">24/7</div>
+                  <div className="text-3xl font-medium text-slate-900 tracking-tight mb-2">24/7</div>
                   <div className="text-slate-600 text-sm tracking-tight">Available</div>
                 </div>
               </div>
@@ -264,43 +282,33 @@ export default function LandingPage() {
       </section>
 
       {/* Final CTA Section */}
-      <section id="download" className="relative overflow-hidden py-32 px-6 bg-white">
-        <StripeBgGuides contained />
+      <section id="download" className="relative py-24 px-6 bg-gradient-to-br from-blue-50/60 via-blue-50/40 to-slate-50/60">
+        <GridGuides preserveBackground={true} />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-medium text-slate-900 mb-6 leading-tight tracking-tight">
-              Download Trust Dating
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed tracking-tight mb-10">
-              Start making smarter, safer connections today. Available for Mac and Windows.
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-medium text-slate-900 mb-6 leading-tight tracking-tight">Ready to transform your dating experience?</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed tracking-tight mb-8">
+              Join thousands who are already making smarter, safer connections with our AI-powered dating assistant.
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3 font-medium tracking-tight rounded-xl text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8">
+            <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 font-medium tracking-tight rounded-2xl text-base shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_16px_rgba(0,0,0,0.15)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_12px_24px_rgba(0,0,0,0.25)] transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-blue-200 border border-slate-700/20">
               <Download className="mr-2 h-5 w-5" />
               Download for Mac
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-blue-200 hover:border-blue-300 text-slate-900 px-8 py-3 font-medium tracking-tight rounded-xl text-base hover:bg-blue-50 transition-all duration-300">
-              <Download className="mr-2 h-5 w-5" />
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-base px-6 py-3 border-2 border-slate-150 hover:bg-white/80 hover:border-blue-200 bg-white/60 text-slate-900 font-medium tracking-tight rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_8px_20px_rgba(0,0,0,0.1)] transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-blue-100"
+            >
               Download for Windows
             </Button>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="p-4">
-              <div className="text-lg font-medium text-slate-900 mb-1 tracking-tight">Free Forever</div>
-              <p className="text-sm text-slate-600 tracking-tight">No subscription or hidden fees</p>
-            </div>
-            <div className="p-4">
-              <div className="text-lg font-medium text-slate-900 mb-1 tracking-tight">Instant Setup</div>
-              <p className="text-sm text-slate-600 tracking-tight">Ready to use in under 60 seconds</p>
-            </div>
-            <div className="p-4">
-              <div className="text-lg font-medium text-slate-900 mb-1 tracking-tight">No Account</div>
-              <p className="text-sm text-slate-600 tracking-tight">Works without registration</p>
-            </div>
-          </div>
+          <p className="text-sm text-slate-500 tracking-tight">
+            Free download • No subscription required • Privacy focused
+          </p>
         </div>
       </section>
 
