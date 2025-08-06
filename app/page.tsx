@@ -313,44 +313,34 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-16 px-6 bg-blue-50/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-6 mb-8">
-            <div className="md:col-span-2">
-              <div className="font-medium text-lg text-slate-900 mb-2 tracking-tight">Trust Dating</div>
-              <p className="text-sm text-slate-600 leading-relaxed tracking-tight max-w-xs mb-3">
-                AI-powered dating overlay that helps you make smarter, safer connections while maintaining complete privacy.
-              </p>
-            </div>
+      <footer className="relative py-20 px-6 pb-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          {/* Footer Links */}
+          <div className="grid md:grid-cols-3 gap-8 mb-6 max-w-4xl mx-auto">
             
-            <div>
-              <h3 className="font-medium text-base text-slate-900 mb-2 tracking-tight">Product</h3>
-              <ul className="space-y-1.5">
-                <li><a href="#features" className="text-sm text-slate-600 hover:text-slate-900 transition-colors tracking-tight">Features</a></li>
-                <li><a href="#download" className="text-sm text-slate-600 hover:text-slate-900 transition-colors tracking-tight">Download</a></li>
-                <li><a href="#" className="text-sm text-slate-600 hover:text-slate-900 transition-colors tracking-tight">Documentation</a></li>
-                <li><a href="#" className="text-sm text-slate-600 hover:text-slate-900 transition-colors tracking-tight">Changelog</a></li>
-              </ul>
-            </div>
             
-            <div>
-              <h3 className="font-medium text-base text-slate-900 mb-2 tracking-tight">Support</h3>
-              <ul className="space-y-1.5">
-                <li><a href="#" className="text-sm text-slate-600 hover:text-slate-900 transition-colors tracking-tight">Help Center</a></li>
-                <li><a href="#" className="text-sm text-slate-600 hover:text-slate-900 transition-colors tracking-tight">Contact Us</a></li>
-                <li><a href="#" className="text-sm text-slate-600 hover:text-slate-900 transition-colors tracking-tight">Privacy Policy</a></li>
-                <li><a href="#" className="text-sm text-slate-600 hover:text-slate-900 transition-colors tracking-tight">Terms of Service</a></li>
-              </ul>
-            </div>
+
+            
           </div>
-          
-          <div className="border-t border-blue-200/50 pt-4 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-slate-600 tracking-tight">
-              © 2025 Trust Dating. All rights reserved.
-            </p>
-            <p className="text-xs text-slate-500 tracking-tight mt-2 md:mt-0">
-              Made with privacy in mind
-            </p>
+
+          {/* Large Company Name Section */}
+          <div className="text-center mb-6 relative">
+            <h2 className="text-8xl md:text-12xl lg:text-[12.1rem] font-bold text-gray-100 leading-none tracking-tight select-none -mb-4 relative">
+              trust dating
+            </h2>
+            {/* Gradient fade mask at bottom - positioned at original location */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none"></div>
+            
+            {/* Copyright - Left aligned like reference image with better spacing */}
+            <div className="flex justify-between items-center text-xs text-slate-400 tracking-tight relative z-10 mt-8 px-12">
+              <div>
+                <p>© 2025 Trust Dating. All rights reserved.</p>
+              </div>
+              <div className="flex space-x-6">
+                <a href="#" className="hover:text-slate-600 transition-colors">Terms of Service</a>
+                <a href="#" className="hover:text-slate-600 transition-colors">Privacy Policy</a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
